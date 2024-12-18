@@ -19,13 +19,20 @@ services:
       POSTGRES_DB: mydatabase
     networks:
       - app_network
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
 
   redis_service:
     build:
       context: ./cache_service
     networks:
       - app_network
+    volumes:
+      - redis_data:/data
 networks:
   app_network:
     driver: bridge
 
+volumes:
+  postgres_data:
+  redis_data:

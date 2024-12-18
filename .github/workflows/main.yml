@@ -25,9 +25,14 @@ jobs:
     # Build the Docker image
     - name: Build Docker image
       run: |
-        docker build -t ${{ secrets.DOCKER_USERNAME }}/your-image-name:latest .
+        docker build -t ${{ secrets.DOCKER_USERNAME }}/web_service:latest ./web_service
+        docker build -t ${{ secrets.DOCKER_USERNAME }}/postgres_service:latest ./database_service
+        docker build -t ${{ secrets.DOCKER_USERNAME }}/redis_service:latest ./cache_service
 
     # Push the Docker image to Docker Hub
     - name: Push Docker image
       run: |
-        docker push ${{ secrets.DOCKER_USERNAME }}/your-image-name:latest
+        docker push ${{ secrets.DOCKER_USERNAME }}/web_service:latest
+        docker push ${{ secrets.DOCKER_USERNAME }}/postgres_service:latest
+        docker push ${{ secrets.DOCKER_USERNAME }}/redis_service:latest
+        

@@ -19,7 +19,7 @@ redis_client = redis.Redis(host="redis_service", port=6379)
 
 @app.route('/')
 def home():
-    return jsonify({"message": "Welcome to the Flask App!"})
+    return jsonify({"message": "Welcome to my Python Flask App!"})
 
 @app.route('/data', methods=['POST'])
 def insert_data():
